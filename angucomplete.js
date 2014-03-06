@@ -185,19 +185,22 @@ angular.module('angucomplete', [] )
                 if(event.which === 40) {
                     if (($scope.currentIndex + 1) < $scope.results.length) {
                         $scope.currentIndex ++;
-                        $scope.$apply();
-                        event.preventDefault;
-                        event.stopPropagation();
-                    }
-
+                    } else {
+                        $scope.currentIndex = 0;                        
+                    } 
                     $scope.$apply();
+                    event.preventDefault;
+                    event.stopPropagation();
+
                 } else if(event.which == 38) {
                     if ($scope.currentIndex >= 1) {
                         $scope.currentIndex --;
-                        $scope.$apply();
-                        event.preventDefault;
-                        event.stopPropagation();
+                    } else {
+                        $scope.currentIndex = $scope.results.length - 1;
                     }
+                    $scope.$apply();
+                    event.preventDefault;
+                    event.stopPropagation();
 
                 } else if (event.which == 13) {
                     if ($scope.currentIndex >= 0 && $scope.currentIndex < $scope.results.length) {
